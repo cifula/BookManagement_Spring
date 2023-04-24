@@ -43,6 +43,11 @@ public class AuthenticationController {
 	public ResponseEntity<?> authenticated(String accessToken) {
 		return ResponseEntity.ok().body(authenticationService.authenticated(accessToken));
 	}
+	
+	@GetMapping("/principal")
+	public ResponseEntity<?> principal(String accessToken) {
+		return ResponseEntity.ok().body(authenticationService.getPrincipal(accessToken));
+	}
 }
 
 
