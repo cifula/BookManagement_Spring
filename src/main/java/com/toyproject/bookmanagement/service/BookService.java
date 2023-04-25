@@ -25,12 +25,10 @@ public class BookService {
 		int index = (searchBookReqDto.getPage() - 1) * 20;
 		Map<String, Object> map = new HashMap<>();
 		map.put("index", index);
-//		map.put("searchValue", searchBookReqDto.getSearchValue());
-//		map.put("categoryId", searchBookReqDto.getCategoryId());
 		
 		bookRepository.searchBooks(map).forEach(book -> {
 			list.add(book.toDto());
-		});;
+		});
 		
 		return list;
 	}

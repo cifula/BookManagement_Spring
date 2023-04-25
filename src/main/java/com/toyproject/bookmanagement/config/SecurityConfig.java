@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.cors();
 		http.csrf().disable();
 		http.httpBasic().disable();
 		http.formLogin().disable();
@@ -40,12 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/auth/**")
 			.permitAll()
 			.anyRequest()
-			.permitAll();
-//			.authenticated();
-//			.and()
-//			.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
-//			.exceptionHandling()
-//			.authenticationEntryPoint(jwtAuthenticationEntryPoint);
+			.authenticated()
+			.and()
+			.addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+			.exceptionHandling()
+			.authenticationEntryPoint(jwtAuthenticationEntryPoint);
 		
 	}
 }
