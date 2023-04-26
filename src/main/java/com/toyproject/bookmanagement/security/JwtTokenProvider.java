@@ -77,7 +77,7 @@ public class JwtTokenProvider {
 		} catch (UnsupportedJwtException e) {
 			log.info("Unsupported JWT Token", e);
 		} catch (IllegalArgumentException e) {
-			log.info("IllegalArgument JWT Token", e);
+//			log.info("IllegalArgument JWT Token", e);
 		} catch (Exception e) {
 			log.info("JWT Token Error", e);
 		}
